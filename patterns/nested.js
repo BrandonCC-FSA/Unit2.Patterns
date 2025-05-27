@@ -37,14 +37,41 @@ export function makeBoard(rows, cols) {
  */
 export function makeTriangle(size) {
   // TODO
+  if (typeof size !== "number") {
+    return null;
+  }
+  if (size <= 0) {
+    return [];
+  }
+  const triangle = [];
+  for (let i = 1; i <= size; i++) {
+    const row = [];
+    for (let index = 0; index < i; index++) {
+      row.push("-");
+    }
+    triangle.push(row);
+  }
+  return triangle;
 }
 
 /**
  * @param {string[]} words
  * @param {string} letter - a single character
  * @returns {number}  the number of times `letter` appears in all the words
- * @returns `0` if `letter is not a string
+ * @returns `0` if `letter` is not a string
  */
 export function countLetter(words, letter) {
   // TODO
+  if (typeof letter !== "string") {
+    return 0;
+  }
+  let counter = 0;
+  words.forEach((word) => {
+    for (const char of word) {
+      if (char === letter) {
+        counter++;
+      }
+    }
+  });
+  return counter;
 }
